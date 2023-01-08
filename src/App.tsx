@@ -1,25 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route} from 'react-router-dom';
+import Page1 from './components/pages/Page1';
+import Page2 from './components/pages/Page2';
+import Page3 from './components/pages/Page3';
+import Page4 from './components/pages/Page4';
+import NavbarC from './components/usefulComponents/Navbar';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavbarC/>
+      <Routes>
+          <Route
+            path='/'
+            element={<Page1/>}
+          />
+          <Route
+            path='/reserveflight'
+            element={<Page2/>}
+          />
+          {/* add endpoint de la route en dessous :departure/:departuredate/:return/:returndate/:id*/}
+          <Route
+            path='/flightdetail/:departure/:departuredate/:return/:returndate/:id'
+            element={<Page3/>}
+          />
+          <Route
+            path='/favoris'
+            element={<Page4/>}
+          />
+          <Route
+            path='*'
+            element={<h1>Error 404 not found ...</h1>}
+          />
+      </Routes>
+    </>
   );
 }
 

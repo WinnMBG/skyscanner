@@ -3,13 +3,24 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import { ThemeProvider } from 'styled-components';
+// import {theme} from './theme';
+import {BrowserRouter} from 'react-router-dom';
+import {theme} from './theme'
+import { ThemeProvider } from 'styled-components';
+// import * as dotenv from 'dotenv';
 
 const root = ReactDOM.createRoot(
+  // dotenv.config();
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
