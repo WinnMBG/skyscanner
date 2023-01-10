@@ -35,10 +35,14 @@ const Page1: React.FC = () => {
             return airItem;
         });
         console.log('before', airTab);
-        const airTabTmp: Airport[] = airTab.filter((element: Airport) => { return element.cityName === city} );
+        const airTabTmp: Airport[] = airTab.filter((element: Airport) => { return ((element.cityName === city) && (element.placeId !== '' ))} );
         console.log('after filtering', airTabTmp);
-        setAirports(airTabTmp);
-        setSearch('');
+        if(airTabTmp.length > 0) {
+            setAirports(airTabTmp);
+            setSearch('');
+        } else {
+            alert('Aucun résultat trouvé. Veuillez retenter votre recherche');
+        } 
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
