@@ -8,8 +8,8 @@ const Page4: React.FC = () => {
     const [listData, setListData] = useState<FlightDetail[][]>([]);
 
     useEffect(() => {
-        let moviesId: FlightDetail[] = (window.localStorage.movies ? window.localStorage.movies.split(",") : []);
-        setListData([moviesId]);
+        let flightsId: FlightDetail[] = (window.localStorage.flights ? window.localStorage.flights.split(",") : []);
+        setListData([flightsId]);
     },[])
 
     // const deleteStorage = () => {
