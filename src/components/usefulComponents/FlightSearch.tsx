@@ -180,7 +180,11 @@ const FlightSearch: React.FC = () => {
                     </div>
                 </div>
                 <div className='d-flex flex-column my-5'>
-                    <h1> {flights?.length}{' Résultats'}</h1><br/>
+                    <h1> 
+                        {flights?.length > 0 ? `${flights?.length} Résultats` : 
+                            <p className='fs-2 fw-bold'>Aucun résultat ne  correspond à votre recherche. Veuillez en effectuer une autre.</p>
+                        }
+                    </h1><br/>
                     {flights?.length > 0 && 
                         flights?.sort((a: Flight, b:Flight): number => { return (a.price - b.price); })
                         .map((fl: Flight) => <FlightCard key={fl.flightId} flight={fl} date={depDate} dateretour={arrDate} />)

@@ -3,7 +3,7 @@ import {ImAirplane} from 'react-icons/im';
 const NavbarC: React.FC = () => {
     return (    
         <nav 
-            className="navbar navbar-expand-lg navbar-light bg-secondary my-2"
+            className="navbar navbar-expand-lg navbar-light bg-secondary bg-gradient my-2"
             style={{padding:'20px 20px'}}
         >
             <a className="navbar-brand ms-4" href="/">

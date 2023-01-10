@@ -1,28 +1,31 @@
 import Header from "../usefulComponents/Header";
 import {useState, useEffect} from 'react';
-import axios from "axios";
+// import axios from "axios";
+import FlightDetails from "../usefulComponents/FlightDetails";
+import { FlightDetail } from "../../types/types";
 
 const Page4: React.FC = () => {
-    const [listData, setListData] = useState([]);
+    const [listData, setListData] = useState<FlightDetail[][]>([]);
 
-    // useEffect(() => {
-    //     let moviesId = (window.localStorage.movies ? window.localStorage.movies.split(",") : []);
-        
-    //     for(let i=0; i < moviesId.length; i++){
-    //         axios.get(`https://api.themoviedb.org/3/movie/${moviesId[i]}?api_key=5858ee6eb60999e939c81351b632d815&language=fr-FR`)
-    //         .then((res) => setListData((listData) => [...listData, res.data]));
-    //     }
-    // },[])
+    useEffect(() => {
+        let moviesId: FlightDetail[] = (window.localStorage.movies ? window.localStorage.movies.split(",") : []);
+        setListData([moviesId]);
+    },[])
+
+    // const deleteStorage = () => {
+    //     let stored = window.localStorage.flights.split(",");
+    //     let newData = stored.filter((id: string) => id !== flight?.flightId)
+    //     window.localStorage.flights = newData;
+    // };
 
     return(
-        <div className="container text-center">
-           {/* <Header/>
+        <div className="container text-center my-5 animate__animated animate__bounceInUp">
            <h2>Favoris<span>❤️</span></h2>
-           <div className="result">
-            {listData.length > 0 ? (listData.map((movie) => {
-                return (<Card mov={movie} key={movie.id}/>)
+           <div className="result d-flex flex-column align-items-center my-3">
+            {listData.length > 0 ? (listData.map((flight) => {
+                return (<FlightDetails flights={flight} key={flight[0]?.flightId}/>)
             })) : <h1>No favorites for the moment...</h1>}
-           </div> */}<h1 className="fs-2 my-5">No favoris for the moment...</h1>
+           </div>
         </div>
     );
 };

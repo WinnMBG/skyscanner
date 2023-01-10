@@ -30,15 +30,9 @@ export type Flight = {
 
 export type FlightDetail = {
     flightId: string;
-    priceOptions: Price[],
     origin: string,
     destination: string,
     duration: number,
     hDepart : string,
     hArrival: string
-}
-
-export type Price = {
-    totalPrice: number,
-    agent: string,
 }
