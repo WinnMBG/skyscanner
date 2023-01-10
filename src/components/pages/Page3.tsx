@@ -37,7 +37,7 @@ const Page3: React.FC = () => {
 
         let flightstab: FlightDetail[] = []
         let aller: FlightDetail = {
-            flightId: data.data,
+            flightId: decodeURI(url[url.length - 1]).split('|')[0],
             origin: data.data.legs[0].origin.name+` (${data.data?.legs[0].origin.displayCode})`,
             hDepart:data.data.legs[0].departure,
             destination: data.data.legs[0].destination.name+` (${data.data?.legs[0].destination.displayCode})`,
@@ -48,7 +48,7 @@ const Page3: React.FC = () => {
         flightstab.push(aller);
 
         let retour: FlightDetail = {
-            flightId: data.data,
+            flightId: decodeURI(url[url.length - 1]).split('|')[1],
             origin: data.data.legs[1].origin.name+` (${data.data?.legs[1].origin.displayCode})`,
             hDepart:data.data.legs[1].departure,
             destination: data.data.legs[1].destination.name+` (${data.data?.legs[1].destination.displayCode})`,
@@ -81,7 +81,7 @@ const Page3: React.FC = () => {
 
     return (
         <div className="container d-flex justify-content-center">
-            <FlightDetails flights={flight}/>
+            <FlightDetails flights={flight} constructLeg={constructLegs}/>
         </div>
     );
 }

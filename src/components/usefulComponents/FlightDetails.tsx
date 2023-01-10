@@ -1,21 +1,27 @@
-import { FlightDetail } from "../../types/types";
+import { FlightDetail, Leg, Favorite } from "../../types/types";
 import * as moment from 'moment';
 import { TbArrowsLeftRight } from "react-icons/tb";
 
 interface FlightsProps {
-    flights: FlightDetail[]
+    flights: FlightDetail[],
+    constructLeg: (url: string[]) => Leg[]
 }
 
-const FlightDetails: React.FC<FlightsProps> = ({flights}) => {
+const FlightDetails: React.FC<FlightsProps> = ({flights, constructLeg}) => {
 
     const addStorage = () => {
-        // let storedDatas = (window.localStorage.flights ? window.localStorage.flights.split(",") : []) ;
-        
-        // if(!(storedDatas.includes(flight[0]?.flightId))){
-        //      storedDatas.push(flight[0]?.flightId);
-        //      window.localStorage.flights = storedDatas;
-        // }
-        console.log('added');
+        let storedDatas = (window.localStorage.flights ? window.localStorage.flights.split(",") : []) ;
+        const legs: Leg[] = constructLeg(window.location.href.split('/'));
+        let id: string = `${flights[0]?.flightId}|${flights[1]?.flightId}`
+        let fav: Favorite = {
+            id: id,
+            legs: legs
+        }
+        if(!(storedDatas.includes(JSON.stringify(fav)))){
+            storedDatas.push(JSON.stringify(fav));
+            window.localStorage.flights = storedDatas;
+            console.log('added', fav, ' to localStorage');
+        }
     };
 
     return (

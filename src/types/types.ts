@@ -36,3 +36,8 @@ export type FlightDetail = {
     hDepart : string,
     hArrival: string
 }
+
+export type Favorite = {
+    id: string,
+    legs: Leg[]
+}
