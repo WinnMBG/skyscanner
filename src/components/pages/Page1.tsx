@@ -68,7 +68,7 @@ const Page1: React.FC = () => {
                 <button type='submit' className='btn btn-outline-dark'> Rechercher </button>
             </Form>
             <div className='d-flex flex-column align-items-center my-5'>
-                {airports.length > 0 && airports.map((item) => <AirportCard key={item.placeId} airport={item}/>)}
+                {airports.length > 0 && airports.map((item) => <AirportCard key={item.placeId} airport={item}/> )}
             </div>
         </div>
     );

@@ -5,6 +5,9 @@ import { Flight, FlightLegs } from '../../types/types';
 import axios from 'axios';
 import FlightCard from './FlightCard';
 import { TbArrowsLeftRight } from 'react-icons/tb';
+// import Skeleton from 'react-loading-skeleton';
+// import 'react-loading-skeleton/dist/skeleton.css';
+// import Spinner from 'react-bootstrap/Spinner';
 
 const FlightSearch: React.FC = () => {
 
